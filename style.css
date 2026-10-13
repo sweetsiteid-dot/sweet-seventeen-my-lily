@@ -1,375 +1,573 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-background:#120606;
-color:white;
-font-family:'Poppins',sans-serif;
-overflow-x:hidden;
+body {
+    background: #350817;
+    background-image: radial-gradient(
+        circle at top,
+        #5a1028 0%,
+        #350817 45%,
+        #270510 100%
+    );
+    color: #fff0f3;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
-.hidden{
-display:none;
+.hidden {
+    display: none !important;
 }
 
-/* HEARTS */
-
-#hearts{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:1;
+button {
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* PIN SCREEN */
+/* =========================
+   FLOATING HEARTS
+========================= */
 
-#pinScreen{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
+#hearts {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.pin-box{
-background:#1c0b0b;
-padding:35px;
-border-radius:25px;
-text-align:center;
-width:350px;
-box-shadow:0 0 35px rgba(255,0,70,.2);
+/* =========================
+   PIN SCREEN
+========================= */
+
+#pinScreen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
 }
 
-.pin-box h1{
-font-size:60px;
-margin-bottom:10px;
+.pin-box {
+    background: rgba(70, 8, 29, 0.94);
+    border: 1px solid rgba(255, 179, 193, 0.25);
+    padding: 35px;
+    border-radius: 25px;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 0 35px rgba(255, 0, 70, 0.2);
 }
 
-.pin-box h2{
-margin-bottom:10px;
-font-family:'Cormorant Garamond',serif;
+.pin-box h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
 }
 
-.pin-box p{
-margin-bottom:20px;
-opacity:.8;
+.pin-box h2 {
+    margin-bottom: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffb3c1;
 }
 
-#pinInput{
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-font-size:22px;
-text-align:center;
-background:#2c1414;
-color:white;
-margin-bottom:20px;
+.pin-box p {
+    margin-bottom: 20px;
+    opacity: 0.85;
 }
 
-.keypad{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
+#pinInput {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgba(255, 179, 193, 0.2);
+    border-radius: 15px;
+    font-size: 22px;
+    text-align: center;
+    background: #2c0a17;
+    color: white;
+    margin-bottom: 20px;
 }
 
-.keypad button{
-height:60px;
-border:none;
-border-radius:15px;
-background:#850000;
-color:white;
-font-size:20px;
-cursor:pointer;
-transition:.3s;
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-.keypad button:hover{
-transform:scale(1.05);
+.keypad button {
+    height: 60px;
+    border: none;
+    border-radius: 15px;
+    background: #a4133c;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:30px;
-position:relative;
-z-index:2;
+.keypad button:hover {
+    background: #c9184a;
+    transform: scale(1.04);
 }
 
-.hero h1{
-font-size:75px;
-font-family:'Cormorant Garamond',serif;
-margin-bottom:10px;
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 2;
 }
 
-.hero h2{
-font-size:42px;
-color:#ffb3b3;
-margin-bottom:20px;
+.hero h1 {
+    font-size: clamp(42px, 8vw, 75px);
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 10px;
+    color: #fff0f3;
 }
 
-.hero p{
-max-width:600px;
-line-height:1.9;
-font-size:18px;
+.hero h2 {
+    font-size: clamp(28px, 5vw, 42px);
+    color: #ffb3c1;
+    margin-bottom: 20px;
 }
 
-.hero button{
-margin-top:30px;
-padding:18px 35px;
-border:none;
-border-radius:50px;
-background:#a10000;
-color:white;
-font-size:18px;
-cursor:pointer;
-transition:.3s;
+.hero p {
+    max-width: 600px;
+    line-height: 1.9;
+    font-size: 18px;
 }
 
-.hero button:hover{
-transform:scale(1.05);
+.hero button {
+    margin-top: 30px;
+    padding: 15px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    background: linear-gradient(135deg, #a4133c, #e63961);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* BOTTLE */
-
-#bottleSection{
-padding:120px 20px;
-text-align:center;
+.hero button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(230, 57, 97, 0.3);
 }
 
-#bottleSection h2{
-font-size:42px;
-margin-bottom:10px;
+/* =========================
+   MESSAGE IN A BOTTLE
+========================= */
+
+#bottleSection {
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.tap-text{
-opacity:.7;
-margin-bottom:25px;
+#bottleSection h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 6vw, 42px);
+    margin-bottom: 10px;
+    color: #ffb3c1;
 }
 
-#bottleArea{
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-height:250px;
+.tap-text {
+    opacity: 0.8;
+    margin-bottom: 25px;
+    line-height: 1.8;
 }
 
-#bottle{
-font-size:120px;
-cursor:pointer;
-transition:.3s;
-z-index:5;
+#bottleArea {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
 }
 
-#bottle:hover{
-transform:scale(1.1);
+#bottle {
+    font-size: 120px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 5;
+    -webkit-tap-highlight-color: transparent;
 }
 
-#flowers{
-position:absolute;
-top:40px;
-left:50%;
-transform:translateX(-50%);
-width:0;
-height:0;
-pointer-events:none;
+#bottle:hover {
+    transform: scale(1.08);
 }
 
-/* LETTER */
-
-#letterContainer{
-display:none;
-margin-top:50px;
+#flowers {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
-.letter-paper{
-max-width:850px;
-margin:auto;
-background:white;
-color:#333;
-padding:40px;
-border-radius:25px;
-box-shadow:0 0 30px rgba(255,255,255,.2);
-text-align:left;
-line-height:2;
-font-size:18px;
+/* =========================
+   LETTER
+========================= */
+
+#letterContainer {
+    display: none;
+    margin: 35px auto 0;
+    width: 100%;
+    max-width: 850px;
+    animation: letterAppear 0.8s ease;
 }
 
-#letterText{
-white-space:pre-line;
+.letter-paper {
+    width: 100%;
+    background: #fff0f3;
+    color: #70132d;
+    padding: 40px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 179, 193, 0.6);
+    box-shadow: 0 0 30px rgba(255, 105, 140, 0.12);
+    text-align: left;
+    line-height: 2;
+    font-size: 18px;
+    overflow-wrap: anywhere;
 }
 
-/* GALLERY */
-
-.gallery{
-padding:120px 20px;
-text-align:center;
+#letterText {
+    white-space: pre-wrap;
 }
 
-.gallery h2{
-font-size:42px;
-margin-bottom:40px;
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-max-width:900px;
-margin:auto;
+/* =========================
+   GALLERY — NEAT 2 x 2
+========================= */
+
+.gallery {
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.gallery-grid img:last-child{
-grid-column:1/3;
-justify-self:center;
-width:48%;
+.gallery h2 {
+    font-size: clamp(30px, 6vw, 42px);
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffb3c1;
+    margin-bottom: 20px;
 }
 
-.gallery-grid img{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-border-radius:18px;
-transition:.3s;
-cursor:pointer;
-box-shadow:0 0 20px rgba(255,255,255,.08);
+.gallery > p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0 auto 25px;
+    max-width: 500px;
+    padding: 0 5px;
 }
 
-.gallery-grid img:hover{
-transform:scale(1.05);
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    align-items: stretch;
 }
 
-/* LOVE QUIZ */
-
-.quiz-section{
-padding:120px 20px;
-text-align:center;
+/* Semua foto mempunyai ukuran yang seragam */
+.gallery-grid img {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid rgba(255, 179, 193, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.quiz-section h2{
-font-size:42px;
-margin-bottom:15px;
+/* Hilangkan aturan lama yang membuat foto terakhir
+   melebar dan pindah ke tengah */
+.gallery-grid img:last-child {
+    grid-column: auto;
+    justify-self: stretch;
+    width: 100%;
 }
 
-.question{
-display:none;
-max-width:500px;
-margin:auto;
+.gallery-grid img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.16);
 }
 
-.question.active{
-display:block;
+/* =========================
+   LOVE QUIZ
+========================= */
+
+.quiz-section {
+    padding: 90px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.question h3{
-margin-bottom:20px;
+.quiz-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 42px);
+    color: #ffb3c1;
+    margin-bottom: 15px;
 }
 
-.question button{
-display:block;
-width:100%;
-margin:10px 0;
-padding:15px;
-border:none;
-border-radius:15px;
-background:#a10000;
-color:white;
-font-size:16px;
-cursor:pointer;
+.quiz-section > p {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
 }
 
-.special-photo{
-width:300px;
-max-width:90%;
-border-radius:20px;
-margin:25px 0;
-box-shadow:0 0 25px rgba(255,255,255,.15);
+.question {
+    display: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 0;
 }
 
-#quizSuccess{
-margin-top:40px;
+.question.active {
+    display: block;
+    animation: letterAppear 0.5s ease;
 }
 
-/* FINAL */
-
-.final{
-padding:120px 25px;
-text-align:center;
+.question h3 {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 19px;
 }
 
-.final h2{
-font-size:55px;
-font-family:'Cormorant Garamond',serif;
-margin-bottom:10px;
+.question button {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 15px;
+    border: 1px solid rgba(255, 179, 193, 0.18);
+    border-radius: 15px;
+    background: #8f1239;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
-.final h3{
-font-size:32px;
-color:#ffb3b3;
-margin-bottom:30px;
+.question button:hover:not(:disabled) {
+    background: #c9184a;
+    transform: translateY(-2px);
 }
 
-.final p{
-max-width:700px;
-margin:auto;
-line-height:2;
-font-size:18px;
+.question button:disabled {
+    opacity: 0.7;
+    cursor: default;
 }
 
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:55px;
+.special-photo {
+    display: block;
+    width: 300px;
+    max-width: 90%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 25px auto;
+    border: 2px solid rgba(255, 179, 193, 0.35);
+    box-shadow: 0 0 25px rgba(255, 105, 140, 0.15);
 }
 
-.hero h2{
-font-size:32px;
+#quizSuccess {
+    margin: 40px auto 0;
+    max-width: 500px;
+    line-height: 1.8;
 }
 
-.hero p{
-font-size:16px;
+/* =========================
+   FINAL BIRTHDAY MESSAGE
+========================= */
+
+.final {
+    padding: 100px 25px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.gallery-grid{
-grid-template-columns:repeat(2,1fr);
+.final h2 {
+    font-size: clamp(38px, 7vw, 55px);
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffb3c1;
+    margin-bottom: 10px;
 }
 
-.letter-paper{
-padding:25px;
-font-size:16px;
+.final h3 {
+    font-size: clamp(25px, 5vw, 32px);
+    color: #ff8fab;
+    margin-bottom: 30px;
 }
 
-#puzzle-board{
-width:270px;
-height:270px;
+.final p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 2;
+    font-size: 18px;
 }
 
-.piece{
-width:90px;
-height:90px;
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 35px 22px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    #bottleSection {
+        padding: 75px 18px;
+    }
+
+    .gallery {
+        padding: 65px 16px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 500px;
+    }
+
+    .gallery-grid img {
+        border-radius: 15px;
+    }
+
+    .quiz-section {
+        padding: 75px 20px;
+    }
+
+    .letter-paper {
+        padding: 25px 22px;
+        font-size: 16px;
+    }
+
+    .final {
+        padding: 75px 22px;
+    }
+
+    .final p {
+        font-size: 16px;
+    }
 }
 
-.final h2{
-font-size:42px;
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+    .pin-box {
+        padding: 25px 20px;
+    }
+
+    .keypad {
+        gap: 8px;
+    }
+
+    .keypad button {
+        height: 54px;
+    }
+
+    .gallery-grid {
+        gap: 9px;
+    }
+
+    .gallery-grid img {
+        border-radius: 12px;
+    }
+
+    .gallery > p {
+        font-size: 14px;
+    }
 }
 
-  }
+/* =========================
+   RED THEME ANIMATIONS
+========================= */
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh);
+        opacity: 0;
+    }
+}
+
+@keyframes flowerBurst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--x), var(--y))
+            scale(1.5)
+            rotate(360deg);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
