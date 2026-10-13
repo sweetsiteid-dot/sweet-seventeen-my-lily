@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Sweet Seventeen, My Lily ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #c9184a;
+    --secondary: #ff4d6d;
+    --background: #2b0713;
+    --light-pink: #fff0f3;
+    --accent: #ffb3c1;
+}
+
+body {
+    background: radial-gradient(circle at top, #6a102b, #2b0713 75%);
+    color: var(--light-pink);
+}
+
+button {
+    background: linear-gradient(135deg, #c9184a, #ff4d6d);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 77, 109, 0.35);
+}
+
+.pin-box {
+    background: rgba(75, 8, 30, 0.9);
+    border: 1px solid rgba(255, 179, 193, 0.3);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 0 35px rgba(255, 77, 109, 0.15);
+}
+
+#pinInput {
+    background: #fff0f3;
+    color: #8b1235;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.hero {
+    background: linear-gradient(
+        rgba(43, 7, 19, 0.35),
+        rgba(43, 7, 19, 0.7)
+    );
+}
+
+.hero h1,
+.final h2 {
+    color: #ffb3c1;
+}
+
+.hero h2 {
+    color: #ff4d6d;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.gallery-grid img,
+.special-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 179, 193, 0.35);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.letter-paper {
+    background: #fff0f3;
+    color: #70132d;
+    border-radius: 15px;
+    padding: 25px;
+    line-height: 1.9;
+}
+
+.question button {
+    margin: 5px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#bottle {
+    cursor: pointer;
+    font-size: 75px;
+    transition: transform 0.3s ease;
+}
+
+#bottle:hover {
+    transform: scale(1.1);
+}
+
+#hearts {
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pin-box {
+        margin: 15px;
+        padding: 22px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<!-- BACKGROUND MUSIC -->
+
+<audio id="music" loop>
+    <source src="beautiful.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PIN SCREEN -->
+
+<div id="pinScreen">
+
+    <div class="pin-box">
+
+        <h1>❤️</h1>
+
+        <h2>A Birthday Gift for My Lily</h2>
+
+        <p>Only you can open this little surprise ♡</p>
+
+        <p>Enter PIN</p>
+
+        <input
+            type="password"
+            id="pinInput"
+            readonly
+            placeholder="••••"
+            maxlength="4"
+            aria-label="Birthday gift PIN"
+        >
+
+        <div class="keypad">
+
+            <button onclick="addPin('1')">1</button>
+            <button onclick="addPin('2')">2</button>
+            <button onclick="addPin('3')">3</button>
+
+            <button onclick="addPin('4')">4</button>
+            <button onclick="addPin('5')">5</button>
+            <button onclick="addPin('6')">6</button>
+
+            <button onclick="addPin('7')">7</button>
+            <button onclick="addPin('8')">8</button>
+            <button onclick="addPin('9')">9</button>
+
+            <button onclick="clearPin()">⌫</button>
+            <button onclick="addPin('0')">0</button>
+            <button onclick="checkPin()">❤️</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN WEBSITE -->
+
+<div id="website" class="hidden">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <p>♡ A LITTLE BIRTHDAY SURPRISE ♡</p>
+
+        <h1>Happy Sweet Seventeen</h1>
+
+        <h2>My Lily 🩷</h2>
+
+        <p>
+            My beloved Lilyy,
+            <br><br>
+            Happy sweet seventeen 🩷
+            <br><br>
+            Today is all about celebrating
+            your beautiful soul.
+            <br><br>
+            I made this little place on the internet
+            just for you, filled with love
+            and little surprises.
+        </p>
+
+        <p>With love, Nayy ❤️</p>
+
+        <button onclick="openHeart()">
+            Open My Heart ❤️
+        </button>
+
+    </section>
+
+    <!-- MESSAGE IN A BOTTLE -->
+
+    <section id="bottleSection" class="hidden">
+
+        <h2>A Message in a Bottle 🍾</h2>
+
+        <p class="tap-text">
+            A little message, made just for you.
+            <br>
+            Tap the bottle, my Lily ♡
+        </p>
+
+        <div id="bottleArea">
+
+            <div id="bottle" onclick="breakBottle()">
+                🍾
+            </div>
+
+            <div id="flowers"></div>
+
+        </div>
+
+        <div id="letterContainer">
+
+            <div class="letter-paper">
+
+                <div id="letterText">
+                    <p>My beloved Lilyy,</p>
+
+                    <p>Happy sweet seventeen 🩷</p>
+
+                    <p>
+                        I hope this new chapter of your life
+                        brings you countless reasons to smile.
+                        May your days be filled with happiness,
+                        beautiful memories, and all the love
+                        your heart deserves.
+                    </p>
+
+                    <p>
+                        You deserve so many wonderful things,
+                        today and always.
+                    </p>
+
+                    <p>
+                        With all my love,
+                        <br>
+                        Nayy ❤️
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PHOTO GALLERY -->
+
+    <section class="gallery">
+
+        <h2>Our Favorite Memories 📸</h2>
+
+        <p>
+            A few little moments worth keeping forever ♡
+        </p>
+
+        <div class="gallery-grid">
+
+            <img src="foto1.jpg" alt="Birthday memory 1">
+            <img src="foto2.jpg" alt="Birthday memory 2">
+            <img src="foto3.jpg" alt="Birthday memory 3">
+            <img src="foto4.jpg" alt="Birthday memory 4">
+
+        </div>
+
+    </section>
+
+    <!-- LOVE QUIZ -->
+
+    <section class="quiz-section">
+
+        <h2>❤️ Love Quiz ❤️</h2>
+
+        <p>
+            Let's see if you can answer
+            all the questions correctly
+            to unlock your final surprise.
+        </p>
+
+        <div id="quizBox">
+
+            <!-- QUESTION 1 -->
+
+            <div class="question active">
+
+                <h3>What color represents love?</h3>
+
+                <button onclick="checkAnswer(this,true)">
+                    Red ❤️
+                </button>
+
+                <button onclick="checkAnswer(this,false)">
+                    Blue
+                </button>
+
+                <button onclick="checkAnswer(this,false)">
+                    Green
+                </button>
+
+            </div>
+
+            <!-- QUESTION 2 -->
+
+            <div class="question">
+
+                <h3>How many hearts are needed to love someone?</h3>
+
+                <button onclick="checkAnswer(this,false)">
+                    2
+                </button>
+
+                <button onclick="checkAnswer(this,true)">
+                    1 ❤️
+                </button>
+
+                <button onclick="checkAnswer(this,false)">
+                    10
+                </button>
+
+            </div>
+
+            <!-- QUESTION 3 -->
+
+            <div class="question">
+
+                <h3>Who is the most special person to Nayy? 🩷</h3>
+
+                <button onclick="checkAnswer(this,false)">
+                    You
+                </button>
+
+                <button onclick="checkAnswer(this,false)">
+                    My Lily
+                </button>
+
+                <button onclick="checkAnswer(this,true)">
+                    Yes, you ❤️
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- QUIZ SUCCESS -->
+
+        <div id="quizSuccess" class="hidden">
+
+            <h2>🎉 You Did It! 🎉</h2>
+
+            <img
+                src="special.jpg"
+                class="special-photo"
+                alt="A special birthday surprise for My Lily"
+            >
+
+            <p>
+                You unlocked the final memory,
+                my Lily ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FINAL BIRTHDAY MESSAGE -->
+
+    <section class="final">
+
+        <h2>Happy Sweet Seventeen ❤️</h2>
+
+        <h3>My Lily 🩷</h3>
+
+        <p>
+            May every dream you carry
+            find its way to reality.
+            <br><br>
+
+            May happiness always find you.
+            <br><br>
+
+            May your smile never fade.
+            <br><br>
+
+            May your heart always be full of love.
+            <br><br>
+
+            And may this new chapter of your life
+            be your most beautiful one yet.
+            <br><br>
+
+            No matter how much time passes,
+            I hope you always remember
+            how special you are.
+            <br><br>
+
+            Happy birthday, my beloved Lilyy.
+            <br><br>
+
+            With love,
+            <br>
+            Nayy ❤️
+        </p>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
